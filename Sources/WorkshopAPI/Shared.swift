@@ -28,7 +28,36 @@ public struct Workshop: Codable, Equatable {
     public var createdAt: Date
     public var maxActivations: Int
     public var state: Int
+    public var metadata: WorkshopMetadata?
 }
+
+public struct WorkshopMetadata: Codable, Equatable {
+    public var description: String?
+    public var sessions: [Session] = []
+    public var meetingLink: URL?
+    public var booklink: URL?
+    public var currentExercise: Int?
+    public var getReady: [GetReady] = []
+}
+
+public struct GetReady: Codable, Equatable {
+    public var image: URL
+    public var title: String
+    public var description: String
+}
+
+public struct Resource: Codable, Equatable {
+    public var title: String
+    public var url: URL
+    public var description: String
+}
+
+public struct Session: Codable, Equatable {
+    public var start: Date
+    public var end: Date
+    public var notes: String?
+}
+
 
 public struct Event: Codable {
     public init(body: String, createdAt: Date) {
