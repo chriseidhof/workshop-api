@@ -51,7 +51,18 @@ public struct Workshop: Codable, Equatable {
     public var createdAt: Date
     public var maxActivations: Int
     public var state: Int
-    public var metadata: JSON<WorkshopMetadata>?
+    public var metadataJSON: String?
+
+    public var metadata: WorkshopMetadata? {
+        get {
+            guard let metadataJSON = metadataJSON else { return nil }
+            return try? JSONDecoder().decode(WorkshopMetadata.self, from: metadataJSON.data(using: .utf8)!)
+        }
+        set {
+            let encoder = JSONEncoder()
+            metadataJSON = try? encoder.encode(newValue).map { String(data: $0, encoding: .utf8) } ?? nil
+        }
+    }
 }
 
 public struct WorkshopMetadata: Codable, Equatable {
