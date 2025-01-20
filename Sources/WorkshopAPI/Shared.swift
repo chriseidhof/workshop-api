@@ -37,7 +37,9 @@ public struct Workshop: Codable, Equatable {
         }
         set {
             let encoder = JSONEncoder()
-            metadataJSON = try? encoder.encode(newValue).map { String(data: $0, encoding: .utf8) } ?? nil
+            if let theData = try? encoder.encode(newValue) {
+                metadataJSON = String(data: theData, encoding: .utf8)
+            }
         }
     }
 }
