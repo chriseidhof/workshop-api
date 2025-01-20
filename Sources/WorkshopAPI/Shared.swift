@@ -46,29 +46,33 @@ public struct Workshop: Codable, Equatable {
 
 public struct WorkshopMetadata: Codable, Equatable {
     public init() { }
-    
+
     public var description: String?
-    public var sessions: [Session] = []
     public var macAppLink: URL?
     public var meetingLink: URL?
     public var booklink: URL?
     public var currentExercise: Int?
     public var getReady: [GetReady] = []
+    public var sessions: [Session] = []
+    public var resources: [Resource] = []
 }
 
-public struct GetReady: Codable, Equatable {
+public struct GetReady: Codable, Equatable, Identifiable {
+    public var id = UUID()
     public var image: URL
     public var title: String
     public var description: String
 }
 
-public struct Resource: Codable, Equatable {
+public struct Resource: Codable, Equatable, Identifiable {
+    public var id = UUID()
     public var title: String
     public var url: URL
     public var description: String
 }
 
-public struct Session: Codable, Equatable {
+public struct Session: Codable, Equatable, Identifiable {
+    public var id = UUID()
     public var start: Date
     public var end: Date
     public var notes: String?
