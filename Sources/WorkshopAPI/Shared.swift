@@ -45,6 +45,8 @@ public struct Workshop: Codable, Equatable {
 }
 
 public struct WorkshopMetadata: Codable, Equatable {
+    public init() { }
+    
     public var description: String?
     public var sessions: [Session] = []
     public var macAppLink: URL?
