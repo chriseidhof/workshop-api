@@ -14,29 +14,6 @@ public struct Row<Element: Codable>: Codable, Identifiable {
 
 extension Row: Equatable where Element: Equatable { }
 
-public struct AsJSON<A: Codable>: Codable {
-    public var value: A
-    public var json: Data {
-        get {
-            let encoder = JSONEncoder()
-            return try? encoder.encode(value) ?? Data()
-        }
-        set {
-            let decoder = JSONDecoder()
-            do {
-                value = try decoder.decode(A.self, from: newValue)
-            } catch {
-                print("JSON Decoding Error: \(error)")
-            }
-        }
-    }
-
-    public var jsonString: String? {
-        get { String(data: json, encoding: .utf8) }
-        set { json = newValue?.data(using: .utf8) ?? Data() }
-    }
-}
-
 public struct Workshop: Codable, Equatable {
     public init(name: String, licenseKey: String, createdAt: Date, maxActivations: Int, state: Int) {
         self.name = name
