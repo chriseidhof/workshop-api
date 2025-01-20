@@ -62,6 +62,13 @@ public struct GetReady: Codable, Equatable, Identifiable {
     public var image: URL
     public var title: String
     public var description: String
+
+    public init(id: UUID = UUID(), image: URL, title: String, description: String) {
+        self.id = id
+        self.image = image
+        self.title = title
+        self.description = description
+    }
 }
 
 public struct Resource: Codable, Equatable, Identifiable {
@@ -69,6 +76,13 @@ public struct Resource: Codable, Equatable, Identifiable {
     public var title: String
     public var url: URL
     public var description: String
+
+    public init(id: UUID = UUID(), title: String, url: URL, description: String) {
+        self.id = id
+        self.title = title
+        self.url = url
+        self.description = description
+    }
 }
 
 public struct Session: Codable, Equatable, Identifiable {
@@ -76,6 +90,13 @@ public struct Session: Codable, Equatable, Identifiable {
     public var start: Date
     public var end: Date
     public var notes: String?
+
+    public init(id: UUID = UUID(), start: Date, end: Date, notes: String? = nil) {
+        self.id = id
+        self.start = start
+        self.end = end
+        self.notes = notes
+    }
 }
 
 
