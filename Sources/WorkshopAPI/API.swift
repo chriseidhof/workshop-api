@@ -35,6 +35,7 @@ public enum AuthenticatedAPICall: Hashable, Codable {
     case addWorkshop(WorkshopData)
     case updateActivations(UpdateActivations)
     case updateState(UpdateState)
+    case updateMetadata(UpdateMetadata)
     case addMessage(AddMessage)
     case removeMessage(RemoveMessage)
     case messages(workshop: String)
