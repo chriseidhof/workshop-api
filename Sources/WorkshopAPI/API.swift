@@ -92,3 +92,14 @@ public struct UpdateState: Codable, Hashable {
     public var id: UUID
     public var state: Int
 }
+
+public struct UpdateMetadata: Codable, Hashable {
+    public init(id: UUID, metadata: WorkshopMetadata) {
+        self.id = id
+        self.metadata = metadata
+    }
+
+    public var id: UUID
+    public var metadata: WorkshopMetadata
+
+}
